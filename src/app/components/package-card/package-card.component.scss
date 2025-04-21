@@ -1,0 +1,33 @@
+.card {
+    padding: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s;
+  
+    &.highlighted {
+      border-color: orange;
+      background-color: #fff3e0;
+    }
+  
+    &.dependent {
+      border-color: #2196f3;
+    }
+  
+    .title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+  
+      .namespace {
+        color: orange;
+      }
+    }
+  
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+  }

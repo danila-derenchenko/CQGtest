@@ -1,1 +1,14 @@
-<p>package-list works!</p>
+<div class="controls">
+    <input type="text" placeholder="Фильтр по названию" />
+    <button>Обновить</button>
+  </div>
+  
+  <div *ngIf="loading">Загрузка...</div>
+  
+  <div class="list" *ngIf="!loading">
+    <app-package-card
+    *ngFor="let pkg of packages"
+    [pkg]="pkg">
+    </app-package-card>
+  </div>
+  
