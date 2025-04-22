@@ -1,10 +1,11 @@
 <div class="card">
-    <div class="title">
-        <div *ngIf="nameParts.length > 1">
+    <div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" class="titleWrapper" [class.dependent]="isDepenpency">
+        <div class="title" *ngIf="nameParts.length > 1">
             <p><span class="namespace">{{ nameParts[0] }}/</span>{{nameParts[1]}}</p>
         </div>
-        <p *ngIf="nameParts.length == 1">{{ nameParts[0] }}</p>
+        <p class="title" *ngIf="nameParts.length == 1">{{ nameParts[0] }}</p>
     </div>
+    <hr>
     <div class="info">
       <span>{{ formattedDownloads }} downloads</span>
       <span>{{ pkg.dependencyCount }} dependencies</span>

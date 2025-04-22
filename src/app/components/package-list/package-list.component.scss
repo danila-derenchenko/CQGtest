@@ -8,9 +8,15 @@
       padding: 0.5rem;
     }
   }
+
+  .refreshButton:hover {
+    cursor: pointer;
+  }
   
   .list {
+    width: 100%;
     display: grid;
+    justify-content: space-around;
     gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     max-height: 80vh;

@@ -1,6 +1,6 @@
 <div class="controls">
     <input type="text" placeholder="Фильтр по названию" />
-    <button>Обновить</button>
+    <button (click)="loadingPackages()" class="refreshButton">Обновить</button>
   </div>
   
   <div *ngIf="loading">Загрузка...</div>
@@ -8,7 +8,10 @@
   <div class="list" *ngIf="!loading">
     <app-package-card
     *ngFor="let pkg of packages"
-    [pkg]="pkg">
+    [pkg]="pkg"
+    (hover)="loadingDependency($event)"
+    [isDepenpency]="dependencies.includes(pkg.id)"
+    >
     </app-package-card>
   </div>
   

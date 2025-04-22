@@ -1,33 +1,70 @@
 .card {
-    padding: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    background: white;
-    cursor: pointer;
-    transition: 0.3s;
-  
-    &.highlighted {
-      border-color: orange;
-      background-color: #fff3e0;
-    }
-  
-    &.dependent {
-      border-color: #2196f3;
-    }
-  
-    .title {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-  
-      .namespace {
-        color: orange;
-      }
-    }
-  
-    .info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      font-size: 0.9rem;
-    }
+  width: 160px;
+  height: 100px;
+  border: 2px solid #666;
+  border-radius: 8px;
+  background: white;
+  font-family: sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover .titleWrapper {
+    background-color: #fff59d;
+    transition: background-color 0.2s ease;
   }
+}
+
+.titleWrapper {
+  background-color: white;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; 
+  .namespace {
+    color: orange;
+    font-weight: bold;
+  }
+  &.dependent {
+    background-color: #666;
+  }
+}
+
+.title {
+  font-weight: normal;
+  font-size: 0.9rem;
+  margin: 0;
+
+  
+}
+
+
+hr {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+  gap: 0.2rem;
+
+  span:first-child::after {
+    content: ' ';
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    background: url('data:image/svg+xml;utf8,<svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18L5.33 9h4.67v6h4V9h4.67L12 2z"/></svg>') no-repeat center;
+    background-size: contain;
+    margin-left: 0.25em;
+    vertical-align: middle;
+  }
+}
