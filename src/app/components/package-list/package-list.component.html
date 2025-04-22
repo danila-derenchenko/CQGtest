@@ -2,7 +2,7 @@
     <input [(ngModel)]="searchTerm" type="text" placeholder="Фильтр по названию" />
     <button (click)="loadingPackages()" class="refreshButton">Обновить</button>
   </div>
-  
+
   <div *ngIf="loading">Загрузка...</div>
   
   <div class="list" *ngIf="!loading">

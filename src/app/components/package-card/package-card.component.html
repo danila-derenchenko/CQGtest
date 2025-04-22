@@ -1,5 +1,5 @@
-<div class="card">
-    <div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" class="titleWrapper" [class.dependent]="isDepenpency">
+<div class="card" (mouseleave)="onMouseLeave()" (mouseenter)="onMouseEnter()">
+    <div (mouseenter)="onMouseEnter()" class="titleWrapper" [class.dependent]="isDepenpency">
         <div class="title" *ngIf="nameParts.length > 1">
             <p><span class="namespace">{{ nameParts[0] }}/</span>{{nameParts[1]}}</p>
         </div>

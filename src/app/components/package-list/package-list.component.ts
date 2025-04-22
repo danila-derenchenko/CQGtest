@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PackageCardComponent } from '../package-card/package-card.component';
 import consts from '../../../../consts';
+import { Package } from '../types';
 
 @Component({
   selector: 'app-package-list',
@@ -13,44 +14,42 @@ import consts from '../../../../consts';
   styleUrl: './package-list.component.scss'
 })
 export class PackageListComponent implements OnInit {
-  @Output() packages: any;
-
+  packages: Package[] = [];
+  dependencies: string[] = [];
   loading: boolean = false;
   searchTerm: string = '';
-  dependencies: string[] = [];
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.loadingPackages()
+  ngOnInit(): void {
+    this.loadingPackages();
   }
 
-  get filteredPackages() {
+  get filteredPackages(): Package[] {
     const term = this.searchTerm.toLowerCase();
-    return (this.packages || []).filter((p: any) =>
+    return this.packages.filter(p =>
       p.id.toLowerCase().includes(term)
     );
   }
-  
 
-  loadingPackages() {
+  loadingPackages(): void {
     this.loading = true;
-    this.http.get<any[]>(`${consts.serverURL}packages`)
+    this.http.get<Package[]>(`${consts.serverURL}packages`)
       .subscribe(data => {
         this.packages = data;
         this.loading = false;
-        console.log(data)
+        console.log(data);
       });
   }
-  
-  loadingDependency(id: any) {
-    if(id != null) {
+
+  loadingDependency(id: string | null): void {
+    if (id) {
       const encodedId = encodeURIComponent(id);
-      this.http.get<any[]>(`${consts.serverURL}packages/${encodedId}/dependencies`)
-      .subscribe(data => {
-        this.dependencies = data;
-        console.log(this.dependencies)
-      });
+      this.http.get<string[]>(`${consts.serverURL}packages/${encodedId}/dependencies`)
+        .subscribe(data => {
+          this.dependencies = data;
+          console.log(this.dependencies);
+        });
     } else {
       this.dependencies = [];
     }
